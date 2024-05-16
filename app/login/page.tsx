@@ -22,7 +22,7 @@ export default function Login() {
       username: data.username,
       password: data.password
     };
-    console.log(data);
+
     
     try {
       const response = await axiosInstancePrivate.post("/api/auth/login", newUser);
