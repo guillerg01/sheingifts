@@ -51,17 +51,17 @@ const LoginForm = () => {
 
     return (
     
-            <div className="h-screen flex-col flex items-center pt-[6.8rem] space-y-1" >
+            <div className="h-screen flex-col flex items-center pt-[1.8rem] space-y-1" >
 
        
 
 
-                <div className="  rounded shadow-lg shadow-gray-400  w-[23rem] ">
+                <div className="  rounded shadow-lg shadow-gray-400  w-[24rem] ">
 
                 <form onSubmit={handleSubmit(onSubmit)} > 
       <div className="flex flex-col items-center justify-center w-full h-full  py-8 mx-auto lg:py-0">
       
-          <div className=" space-y-4 md:space-y-6 w-full h-full sm:p-8">
+          <div className=" space-y-4 md:space-y-4 w-full h-full sm:p-8">
             <p className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Create an account
             
@@ -98,7 +98,7 @@ const LoginForm = () => {
                   <input className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300  focus:ring-primary-600 ring-offset-gray-800" type="checkbox" aria-describedby="terms" id="terms"/>
                 </div>
                 <div className="ml-3 text-sm">
-                  <label className="font-light  text-gray-300">
+                  <label className="font-light  text-gray-500">
                     I accept the
                     <a href="#" className="font-medium text-primary-600 hover:underline text-primary-500">
                       Terms and Conditions

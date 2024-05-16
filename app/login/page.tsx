@@ -63,7 +63,7 @@ Cookies.set('access_token', response.data.jwtToken)
             Remember me
           </label>
           <a href="#" className="text-sm text-blue-500 hover:underline mb-0.5">Forgot password?</a>
-          <p className="text-gray-900 mt-4"> Do not have an account? <a href="#" className="text-sm text-blue-500 -200 hover:underline mt-4">Signup</a></p>
+          <p className="text-gray-900 mt-4"> Do not have an account? <a href="/register" className="text-sm text-blue-500 -200 hover:underline mt-4">Signup</a></p>
         </div>
         <button type="submit" className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150">Login</button>
         </form>
