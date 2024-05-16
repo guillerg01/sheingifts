@@ -15,7 +15,7 @@ export default function Login() {
   const [data, setData] = useState(null);
 
   const onSubmit = async (data:any) => {
-    if( data.email&&data.username&&data.password){
+    if( data.username&&data.password){
       
     
     const newUser = {
