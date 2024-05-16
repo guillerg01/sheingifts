@@ -1,13 +1,61 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
+import axiosInstancePrivate from '@/service/axiosInstancePrivate';
+import { useForm } from 'react-hook-form'
+import { register } from 'module';
+import { log } from 'console';
 
-export default function page(){
+export default function Login(){
+  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm();
+  const [data, setData] = useState(null);
+  
+  //Guardar datos
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  function createPost() {
+    axiosInstancePrivate
+      .post("/api/auth/login", {
+        username,
+        password
+      })
+      .then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      });
+      console.log({username, password});
+      
+  }
+
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
     <div className="w-full max-w-md bg-white rounded-lg shadow-lg shadow-gray-400 p-6">
       <h2 className="text-2xl font-bold text-gray-900 mb-4">Login</h2>
-      <form className="flex flex-col">
-        <input type="email" className="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Email address"/>
-        <input type="password" className="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Password"/>
+      <form onSubmit={createPost} className="flex flex-col">
+        
+        <input
+        value={username} onChange={(e) => setUsername(e.target.value)}
+         type="email"
+        // {...register("username",{
+        //   required: {
+        //     value: true,
+        //     message : "username is required"
+        //   }
+
+        // })}
+        // name='username'
+        // id='username'
+        className="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" 
+        placeholder="Email address"/>
+        
+        <input 
+         value={password} onChange={(e) => setPassword(e.target.value)}
+        type="password" 
+        className="bg-gray-100 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" 
+        placeholder="Password"/>
+
+
         <div className="flex items-center justify-between flex-wrap">
           <label  className="text-sm text-gray-900 cursor-pointer">
             <input type="checkbox" id="remember-me" className="mr-2"/>
