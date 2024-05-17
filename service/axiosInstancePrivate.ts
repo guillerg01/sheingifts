@@ -21,7 +21,7 @@ axiosInstancePrivate.interceptors.request.use((config) => {
    const accessToken = Cookies.get('access_token');
    // Añade el token de acceso al encabezado de autorización si está disponible
    if (accessToken) {
-      config.headers[ "Authorization" ] = accessToken;
+      config.headers["Authorization"] = "Bearer " + accessToken;
    }
    return config;
 }, (error) => {
@@ -37,9 +37,9 @@ axiosInstancePrivate.interceptors.response.use((response) => {
 
    // Verifica si el error es un 401
    if (error.response && (error.response.status === 401 || error.response.status === 403 || error.response.status === 500)) {
-      Cookies.remove('access_token');
-      localStorage.clear();
-      window.location.replace('/')
+      // Cookies.remove('access_token');
+      // localStorage.clear();
+      // window.location.replace('/')
    }
 
    return Promise.reject(error);
