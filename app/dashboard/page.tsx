@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import List from '../components/list'
 
 export default function Dashboard (){
   return (
@@ -134,6 +135,8 @@ export default function Dashboard (){
 		</div>
 	</div>
 	<div className="py-6 text-sm text-center text-gray-600">© 1968 Company Co. All rights reserved.</div>
+{/*LISTA DE USUARIOS TEST*/}
+<List/>
 </footer></>
   )
 }

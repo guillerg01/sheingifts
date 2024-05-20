@@ -1,41 +1,40 @@
+// Conseguir la informacion de los usuarios
+// Revisar la cookie de autoenticacion para determinar si admin o usuario normal
+// Renderizar
+
 "use client";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import verifyRole from "@/app/modules/verifyRole";
 import axiosInstancePrivate from "@/service/axiosInstancePrivate";
+// tipos de respuesta del backend
 import { usersAll, userType } from "@/app/types/list";
-
 
 export default function List(){
  const [list, setList] = useState<usersAll|null>(null);
  const [error, setError] = useState<boolean>(false);
 
-const getList = async () => {
- try {
-   const users = await axiosInstancePrivate.get('/api/list/all',{
-    params: { 
-     page: 1, 
-     limit: 10,
-    }
-   })
 
-   setList(users.data);
-  } catch (err) {
-   setError(true);
+useEffect(()=>{
+const fetchData = async () => {
+ try {
+  const res = await axiosInstancePrivate.get('/api/list/all',{
+   params: { 
+    page: 1, 
+    limit: 10,
+   }
+  });
+  const users = res.data;
+  setList(users);
+ } catch (err) {
+  setError(true);
  }
 }
+fetchData();
+},[]);
 
-getList();
 
 return (
-    <ul>
-    {!error && list?.data.map((user: userType) => (
-       <li key={user.role.id}>
-        <div>{user.username}</div>
-        <div>{user.email}</div>
-       </li>
-      ))
-    }
-    </ul>
+ <div>{JSON.stringify(list?.data)}</div>
 );
 
 }

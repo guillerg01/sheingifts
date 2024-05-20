@@ -9,6 +9,7 @@ export interface userType {
  }
 } 
 
+// Formato de respuesta de  /api/users/all
 export interface usersAll {
  pageNumber: string;
  pageLimit: string;
