@@ -40,7 +40,7 @@ axiosInstancePrivate.interceptors.response.use((response) => {
       // Cookies.remove('access_token');
       // localStorage.clear();
       // window.location.replace('/')
-   }
+   } 
 
    return Promise.reject(error);
 });
